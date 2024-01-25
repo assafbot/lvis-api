@@ -525,19 +525,22 @@ class Params:
         self.rec_thrs = np.linspace(
             0.0, 1.00, int(np.round((1.00 - 0.0) / 0.01)) + 1, endpoint=True
         )
-        self.max_dets = 300
-        self.area_rng = [
-            [0 ** 2, 1e5 ** 2],
-            [0 ** 2, 32 ** 2],
-            [32 ** 2, 96 ** 2],
-            [96 ** 2, 1e5 ** 2],
-        ]
-        self.area_rng_lbl = ["all", "small", "medium", "large"]
+        self.max_dets = 100
+        self.area_rng = [[0, 1e5 ** 2]]
+        # self.area_rng = [
+        #     [0 ** 2, 1e5 ** 2],
+        #     [0 ** 2, 32 ** 2],
+        #     [32 ** 2, 96 ** 2],
+        #     [96 ** 2, 1e5 ** 2],
+        # ]
+        self.area_rng_lbl = ["all"]
+        # self.area_rng_lbl = ["all", "small", "medium", "large"]
         self.use_cats = 1
         # We bin categories in three bins based how many images of the training
         # set the category is present in.
         # r: Rare    :  < 10
         # c: Common  : >= 10 and < 100
         # f: Frequent: >= 100
+        # self.img_count_lbl = ["r", "c", "f"]
         self.img_count_lbl = ["r", "c", "f"]
         self.iou_type = iou_type
