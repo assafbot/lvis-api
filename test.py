@@ -1,5 +1,4 @@
-import logging
-from lvis import LVIS, LVISResults, LVISEval
+from lvis import LVISEval
 import time
 
 if __name__ == "__main__":
@@ -11,8 +10,6 @@ if __name__ == "__main__":
     ANN_TYPE = 'bbox'
     a = time.time()
     lvis_eval = LVISEval(ANNOTATION_PATH, RESULT_PATH, ANN_TYPE)
-    lvis_eval.evaluate()
-    lvis_eval.accumulate()
-    lvis_eval.summarize()
+    lvis_eval.run()
     print('AP50: {}'.format(lvis_eval.results['AP50']))
-    print('final: {}'.format(time.time() - a))
+    print('final: {}'.format(time.time()/60 - a/60))
